@@ -15,7 +15,7 @@ public class Book extends BaseEntity{
     private Integer totalPages;
     private Integer publishedYear;
     @OneToOne
-    private PublisherHouse publishingHouse;
+    private PublisherHouse publisherHouse;
     @OneToOne
     private Image image;
     @ManyToOne
