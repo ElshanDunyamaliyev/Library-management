@@ -1,0 +1,14 @@
+spring:
+    application:
+        name: library
+    datasource:
+        url: ${url}
+        password: ${password}
+        username: ${username}
+    jpa:
+        hibernate:
+            ddl-auto: create
+        properties:
+            hibernate:
+                format_sql: true
+        show-sql: true
