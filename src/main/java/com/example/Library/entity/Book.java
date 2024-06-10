@@ -13,6 +13,7 @@ public class Book extends BaseEntity{
 
     private String title;
     private Integer totalPages;
+    private Integer lastReadPageNumber;
     private Integer publishedYear;
     @OneToOne
     private PublisherHouse publisherHouse;

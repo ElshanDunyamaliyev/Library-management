@@ -9,6 +9,7 @@ import java.io.File;
 public class BookDto {
     private String title;
     private Integer totalPages;
+    private Integer lastReadPageNumber;
     private Integer publishedYear;
     private File image;
     private Category category;
