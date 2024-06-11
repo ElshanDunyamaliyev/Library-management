@@ -14,4 +14,8 @@ public class CategoryService {
     public Category getCategoryById(Long categoryId) {
         return categoryRepository.findById(categoryId).orElse(null);
     }
+
+    public Category getCategoryByName(String categoryName) {
+        return categoryRepository.findByCategoryName(categoryName);
+    }
 }

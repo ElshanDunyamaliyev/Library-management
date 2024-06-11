@@ -12,5 +12,6 @@ public class BookDto {
     private Integer lastReadPageNumber;
     private Integer publishedYear;
     private File image;
-    private Category category;
+    private Long categoryId;
+    private Long authorId;
 }

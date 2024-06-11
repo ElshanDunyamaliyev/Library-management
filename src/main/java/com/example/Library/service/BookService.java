@@ -7,9 +7,11 @@ import com.example.Library.mapper.BookMapper;
 import com.example.Library.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +25,12 @@ public class BookService {
     private final CategoryService categoryService;
 
     public List<BookDto> getAllBooks() {
-        return bookRepository.findAll().stream().map(bookMapper::mapToDto).collect(Collectors.toList());
+        return bookRepository.findAll(PageRequest.of(0,5)).stream().map(bookMapper::mapToDto).collect(Collectors.toList());
+    }
+
+    public List<BookDto> searchByCategory(Category category) {
+        Category category1 = categoryService.getCategoryByName(category.getCategoryName());
+        return category1.getBooks().stream().map(bookMapper::mapToDto).collect(Collectors.toList());
     }
 
     public BookDto getBookById(Long bookId) {
