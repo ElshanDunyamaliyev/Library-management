@@ -1,5 +1,6 @@
 package com.example.Library.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +23,7 @@ public class Author extends BaseEntity {
     private String lastName;
 
     @OneToMany(mappedBy = "author")
+    @JsonIgnore
     private List<Book> books;
 
 }

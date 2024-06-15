@@ -15,7 +15,4 @@ public class CategoryService {
         return categoryRepository.findById(categoryId).orElse(null);
     }
 
-    public Category getCategoryByName(String categoryName) {
-        return categoryRepository.findByCategoryName(categoryName);
-    }
 }

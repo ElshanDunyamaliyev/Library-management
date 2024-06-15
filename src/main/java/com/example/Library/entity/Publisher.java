@@ -1,21 +1,25 @@
 package com.example.Library.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
-@Table(name = "images")
+@Table(name = "publisher")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Image extends BaseEntity {
+public class Publisher extends BaseEntity{
 
-    @Column(name = "image_url")
-    private String imageUrl;
+    private String name;
+
+    @OneToMany(mappedBy = "publisher")
+    private List<Book> books;
 }

@@ -1,0 +1,30 @@
+package com.example.Library.enums;
+
+public enum CategoryType {
+    HORROR,
+    SCI_FI,
+    FANTASY,
+    MYSTERY,
+    ROMANCE,
+    NON_FICTION,
+    THRILLER,
+    BIOGRAPHY,
+    HISTORY,
+    SELF_HELP,
+    HEALTH,
+    CHILDREN,
+    YOUNG_ADULT,
+    CLASSIC,
+    COMIC,
+    GRAPHIC_NOVEL,
+    POETRY,
+    COOKBOOK,
+    TRAVEL,
+    ART,
+    RELIGION,
+    SCIENCE,
+    TECHNOLOGY,
+    BUSINESS,
+    SPORTS,
+    TRUE_CRIME
+}

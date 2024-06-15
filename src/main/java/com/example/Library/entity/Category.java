@@ -1,5 +1,7 @@
 package com.example.Library.entity;
 
+import com.example.Library.enums.CategoryType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,8 +18,10 @@ import java.util.List;
 @AllArgsConstructor
 public class Category extends BaseEntity{
 
-    private String categoryName;
+    @Enumerated(EnumType.STRING)
+    private CategoryType categoryType;
 
     @OneToMany(mappedBy = "category")
+    @JsonIgnore
     private List<Book> books;
 }

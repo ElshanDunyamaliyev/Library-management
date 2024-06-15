@@ -2,12 +2,12 @@ spring:
     application:
         name: library
     datasource:
-        url: ${url}
-        password: ${password}
-        username: ${username}
+        url: jdbc:postgresql://localhost:5432/postgres
+        password: postgres
+        username: postgres
     jpa:
         hibernate:
-            ddl-auto: create
+            ddl-auto: create-drop
         properties:
             hibernate:
                 format_sql: true

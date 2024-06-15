@@ -22,15 +22,13 @@ public class BookService {
 
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;
-    private final CategoryService categoryService;
 
     public List<BookDto> getAllBooks() {
         return bookRepository.findAll(PageRequest.of(0,5)).stream().map(bookMapper::mapToDto).collect(Collectors.toList());
     }
 
-    public List<BookDto> searchByCategory(Category category) {
-        Category category1 = categoryService.getCategoryByName(category.getCategoryName());
-        return category1.getBooks().stream().map(bookMapper::mapToDto).collect(Collectors.toList());
+    public List<BookDto> getBookByTitle(String title) {
+        return bookRepository.findByTitle(title).stream().map(bookMapper::mapToDto).collect(Collectors.toList());
     }
 
     public BookDto getBookById(Long bookId) {
@@ -41,8 +39,6 @@ public class BookService {
     @Transactional
     public Book saveBook(BookDto bookDto) {
         Book bookEntity = bookMapper.mapToEntity(bookDto);
-        Category category = categoryService.getCategoryById(bookEntity.getCategory().getId());
-        bookEntity.setCategory(category);
         return bookRepository.save(bookEntity);
     }
 
@@ -51,7 +47,7 @@ public class BookService {
         Book bookEntity = bookRepository.findById(bookId).orElseThrow();
         bookEntity.setTitle(bookDto.getTitle());
         bookEntity.setPublishedYear(bookDto.getPublishedYear());
-        bookEntity.setLastReadPageNumber(bookDto.getLastReadPageNumber());
+//        bookEntity.setLastReadPage(bookDto.getLastReadPage());
         return bookRepository.save(bookEntity);
     }
 
