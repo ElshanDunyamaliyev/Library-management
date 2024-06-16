@@ -1,10 +1,7 @@
 package com.example.Library.entity;
 
-import com.example.Library.enums.BookStatus;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.List;
 
 @Entity
 @Table(name = "book")
@@ -31,9 +28,4 @@ public class Book extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
-
-//    @Column(name = "last_read_page")
-//    private Integer lastReadPage;
-//    @Column(name = "book_status")
-//    private BookStatus bookStatus;
 }

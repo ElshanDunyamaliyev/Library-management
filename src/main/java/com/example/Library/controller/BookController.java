@@ -2,7 +2,7 @@ package com.example.Library.controller;
 
 import com.example.Library.dto.BookDto;
 import com.example.Library.entity.Book;
-import com.example.Library.service.BookService;
+import com.example.Library.service.BookServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookController {
 
-    private final BookService bookService;
+    private final BookServiceImpl bookService;
 
     @GetMapping("/book")
     public ResponseEntity<List<BookDto>> getAllBooks() {
@@ -48,7 +48,7 @@ public class BookController {
 
     @PutMapping("/{bookId}")
     public ResponseEntity<Book> updateBook(@PathVariable Long bookId, @RequestBody BookDto bookDto) {
-        Book updatedBook = bookService.updateBook(bookId, bookDto);
+        Book updatedBook = bookService.updateBookById(bookId, bookDto);
         return ResponseEntity.ok(updatedBook);
     }
 

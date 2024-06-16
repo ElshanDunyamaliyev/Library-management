@@ -1,10 +1,6 @@
 package com.example.Library.dto;
 
-import com.example.Library.entity.Category;
-import com.example.Library.enums.BookStatus;
 import lombok.Data;
-
-import java.io.File;
 
 @Data
 public class BookDto {
@@ -15,7 +11,4 @@ public class BookDto {
     private Long publisherId;
     private Long categoryId;
     private Long authorId;
-
-//    private Integer lastReadPage;
-//    private BookStatus bookStatus;
 }

@@ -1,18 +1,17 @@
 package com.example.Library.service;
 
+import com.example.Library.dto.BookDto;
+import com.example.Library.dto.CategoryDto;
+import com.example.Library.entity.Book;
 import com.example.Library.entity.Category;
-import com.example.Library.repository.CategoryRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
-@Service
-@RequiredArgsConstructor
-public class CategoryService {
+import java.util.List;
 
-    private final CategoryRepository categoryRepository;
+public interface CategoryService {
 
-    public Category getCategoryById(Long categoryId) {
-        return categoryRepository.findById(categoryId).orElse(null);
-    }
-
+    public List<CategoryDto> getAllCategories();
+    public CategoryDto getCategoryById(Long id);
+    public void saveCategory(CategoryDto categoryDto);
+    public Category updateCategoryById(Long categoryId, CategoryDto categoryDto);
+    public void deleteCategoryById(Long categoryId);
 }
