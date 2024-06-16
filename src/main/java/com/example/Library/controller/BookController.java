@@ -1,8 +1,11 @@
 package com.example.Library.controller;
 
 import com.example.Library.dto.BookDto;
+import com.example.Library.dto.CategoryDto;
 import com.example.Library.entity.Book;
 import com.example.Library.service.BookServiceImpl;
+import com.example.Library.service.CategoryService;
+import com.example.Library.service.CategoryServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,28 +25,31 @@ public class BookController {
         return ResponseEntity.ok(books);
     }
 
-//    @GetMapping("/search")
-//    public ResponseEntity<List<BookDto>> searchByCategory(@RequestParam CategoryType categoryType) {
-//        category.setCategoryType(categoryType);
-//        List<BookDto> books = bookService.searchByCategory(category);
-//        return ResponseEntity.ok(books);
-//    }
-
     @GetMapping("/search")
     public ResponseEntity<List<BookDto>> getBookByTitle(@RequestParam String title) {
         List<BookDto> books = bookService.getBookByTitle(title);
         return ResponseEntity.ok(books);
     }
 
-    @GetMapping("/{bookId}")
+    @GetMapping("/book/{bookId}")
     public ResponseEntity<BookDto> getBookById(@PathVariable Long bookId) {
         BookDto bookDto = bookService.getBookById(bookId);
         return ResponseEntity.ok(bookDto);
     }
 
-    @PostMapping
+    @PostMapping("/book")
     public void saveBook(@RequestBody BookDto bookDto) {
         bookService.saveBook(bookDto);
+    }
+
+    @PostMapping("/category/{categoryId}/book/{bookId}")
+    public void saveBookByCategory(@PathVariable Long categoryId,@PathVariable Long bookId) {
+        bookService.saveBookByCategory(categoryId, bookId);
+    }
+
+    @PostMapping("/author/{authorId}/book/{bookId}")
+    public void saveBookByAuthor(@PathVariable Long authorId,@PathVariable Long bookId) {
+        bookService.saveBookByAuthor(authorId, bookId);
     }
 
     @PutMapping("/{bookId}")

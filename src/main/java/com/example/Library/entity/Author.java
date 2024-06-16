@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
@@ -21,9 +22,11 @@ public class Author extends BaseEntity {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
+    @Column(name = "birth_date")
+    private Integer birthDate;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author",cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Book> books;
+    private Set<Book> books;
 
 }

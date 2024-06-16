@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "category")
@@ -21,7 +22,7 @@ public class Category extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private CategoryType categoryType;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Book> books;
+    private Set<Book> books;
 }

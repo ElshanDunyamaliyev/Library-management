@@ -3,20 +3,29 @@ package com.example.Library.controller;
 import com.example.Library.dto.CategoryDto;
 import com.example.Library.service.CategoryServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/category")
 @RequiredArgsConstructor
 public class CategoryController {
 
     private final CategoryServiceImpl categoryService;
 
-    @PostMapping("/category")
+    @GetMapping
+    public List<CategoryDto> getAllCategories() {
+        return categoryService.getAllCategories();
+    }
+
+    @PostMapping
     public void addCategory(@RequestBody CategoryDto categoryDto) {
         categoryService.saveCategory(categoryDto);
+    }
+
+    @DeleteMapping("/{categoryId}")
+    public void deleteCategory(@PathVariable Long categoryId) {
+        categoryService.deleteCategoryById(categoryId);
     }
 }

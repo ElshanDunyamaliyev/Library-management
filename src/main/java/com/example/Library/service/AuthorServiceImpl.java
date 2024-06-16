@@ -16,13 +16,14 @@ public class AuthorServiceImpl implements AuthorService{
 
     private final AuthorRepository authorRepository;
     private final AuthorMapper authorMapper;
+
     @Override
-    public List<AuthorDto> findAll() {
+    public List<AuthorDto> getAllAuthors() {
         return authorRepository.findAll().stream().map(authorMapper::mapToDto).collect(Collectors.toList());
     }
 
     @Override
-    public AuthorDto findById(Long id) {
+    public AuthorDto getAuthorById(Long id) {
         return authorMapper.mapToDto(authorRepository.findById(id).orElseThrow());
     }
 

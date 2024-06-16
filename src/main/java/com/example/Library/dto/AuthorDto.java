@@ -1,10 +1,18 @@
 package com.example.Library.dto;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+import java.util.Set;
+
+@Getter
+@Setter
 public class AuthorDto {
     
     private String firstName;
     private String lastName;
+    private Integer birthDate;
+
+    private Set<BookDto> books;
 }
