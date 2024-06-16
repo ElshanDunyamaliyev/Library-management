@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -14,5 +15,5 @@ public class AuthorDto {
     private String lastName;
     private Integer birthDate;
 
-    private Set<BookDto> books;
+    private List<Book> books;
 }

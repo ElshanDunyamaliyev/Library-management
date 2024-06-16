@@ -12,7 +12,24 @@ public class BookDto {
     private String description;
     private Integer totalPage;
     private Integer publishedYear;
-    private CategoryDto category;
-    private AuthorDto author;
-    private PublisherDto publisher;
+    private Category category;
+    private Author author;
+    private Publisher publisher;
+
+    @Data
+    public static class Category{
+        private String categoryName;
+    }
+
+    @Data
+    public static class Author{
+        private String firstName;
+        private String lastName;
+        private Integer birthDate;
+    }
+
+    @Data
+    public static class Publisher{
+        private String publisherName;;
+    }
 }

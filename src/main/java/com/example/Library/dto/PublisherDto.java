@@ -1,11 +1,11 @@
 package com.example.Library.dto;
 
-import com.example.Library.entity.Book;
 import jakarta.persistence.Column;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -14,5 +14,5 @@ public class PublisherDto {
 
     private String publisherName;
 
-    private Set<BookDto> books;
+    private List<Book> books;
 }

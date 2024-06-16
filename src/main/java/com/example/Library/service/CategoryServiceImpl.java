@@ -32,7 +32,7 @@ public class CategoryServiceImpl implements CategoryService{
 
     public Category updateCategoryById(Long categoryId,CategoryDto categoryDto) {
         Category category = categoryRepository.findById(categoryId).orElseThrow();
-        category.setCategoryType(categoryDto.getCategoryType());
+        category.setCategoryName(categoryDto.getCategoryName());
         return categoryRepository.save(category);
     }
 

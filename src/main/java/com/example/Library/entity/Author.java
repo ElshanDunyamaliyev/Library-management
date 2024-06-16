@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name = "author")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,6 +27,6 @@ public class Author extends BaseEntity {
 
     @OneToMany(mappedBy = "author",cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Book> books;
+    private List<Book> books;
 
 }

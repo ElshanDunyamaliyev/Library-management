@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface CategoryService {
 
-    public List<CategoryDto> getAllCategories();
-    public CategoryDto getCategoryById(Long id);
-    public void saveCategory(CategoryDto categoryDto);
-    public Category updateCategoryById(Long categoryId, CategoryDto categoryDto);
-    public void deleteCategoryById(Long categoryId);
+    List<CategoryDto> getAllCategories();
+    CategoryDto getCategoryById(Long id);
+    void saveCategory(CategoryDto categoryDto);
+    Category updateCategoryById(Long categoryId, CategoryDto categoryDto);
+    void deleteCategoryById(Long categoryId);
 }

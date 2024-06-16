@@ -28,8 +28,8 @@ public class AuthorServiceImpl implements AuthorService{
     }
 
     @Override
-    public Author saveAuthor(AuthorDto authorDto) {
-        return authorRepository.save(authorMapper.mapToEntity(authorDto));
+    public void saveAuthor(AuthorDto authorDto) {
+        authorRepository.save(authorMapper.mapToEntity(authorDto));
     }
 
     @Override

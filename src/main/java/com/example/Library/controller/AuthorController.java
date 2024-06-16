@@ -29,4 +29,14 @@ public class AuthorController {
         authorService.saveAuthor(authorDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("Author created successfully");
     }
+
+    @PutMapping("/{authorId}")
+    public void updateAuthor(@PathVariable Long authorId, @RequestBody AuthorDto authorDto) {
+        authorService.updateAuthorById(authorId,authorDto);
+    }
+
+    @DeleteMapping("/{authorId}")
+    public void deleteAuthor(@PathVariable Long authorId) {
+        authorService.deleteAuthorById(authorId);
+    }
 }

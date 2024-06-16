@@ -19,10 +19,10 @@ import java.util.Set;
 @AllArgsConstructor
 public class Category extends BaseEntity{
 
-    @Enumerated(EnumType.STRING)
-    private CategoryType categoryType;
+    @Column(name = "category_name")
+    private String categoryName;
 
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Book> books;
+    private List<Book> books;
 }
