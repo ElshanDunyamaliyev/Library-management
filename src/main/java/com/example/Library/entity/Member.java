@@ -1,5 +1,6 @@
 package com.example.Library.entity;
 
+import com.example.Library.enums.MemberRole;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;

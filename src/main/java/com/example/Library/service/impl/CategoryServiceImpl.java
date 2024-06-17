@@ -8,6 +8,7 @@ import com.example.Library.repository.CategoryRepository;
 import com.example.Library.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     public List<CategoryDto> getAllCategories(){
         log.info("ActionLog.getAllCategories.start");
-        var categories = categoryRepository.findAll().stream().map(categoryMapper::mapToDto).collect(Collectors.toList());
+        var categories = categoryRepository.findAll(PageRequest.of(0,5)).stream().map(categoryMapper::mapToDto).collect(Collectors.toList());
         log.info("ActionLog.getAllCategories.end");
         return categories;
     }

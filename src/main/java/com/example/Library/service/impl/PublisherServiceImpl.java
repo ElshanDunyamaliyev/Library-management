@@ -8,6 +8,7 @@ import com.example.Library.repository.PublisherRepository;
 import com.example.Library.service.PublisherService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class PublisherServiceImpl implements PublisherService {
     @Override
     public List<PublisherDto> getAllPublishers() {
         log.info("ActionLog.getAllPublishers.start");
-        var publishers = publisherRepository.findAll().stream().map(publisherMapper::mapToDto).collect(Collectors.toList());
+        var publishers = publisherRepository.findAll(PageRequest.of(0,5)).stream().map(publisherMapper::mapToDto).collect(Collectors.toList());
         log.info("ActionLog.getAllPublishers.end");
         return publishers;
     }

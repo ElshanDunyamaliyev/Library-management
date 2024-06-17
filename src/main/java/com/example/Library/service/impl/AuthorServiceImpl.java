@@ -8,6 +8,7 @@ import com.example.Library.repository.AuthorRepository;
 import com.example.Library.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public List<AuthorDto> getAllAuthors() {
         log.info("ActionLog.getAllAuthors.start");
-        var authors = authorRepository.findAll().stream().map(authorMapper::mapToDto).collect(Collectors.toList());
+        var authors = authorRepository.findAll(PageRequest.of(0,5)).stream().map(authorMapper::mapToDto).collect(Collectors.toList());
         log.info("ActionLog.getAllAuthors.end");
         return authors;
     }

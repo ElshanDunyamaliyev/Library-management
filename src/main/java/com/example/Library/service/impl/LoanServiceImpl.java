@@ -9,6 +9,7 @@ import com.example.Library.repository.LoanRepository;
 import com.example.Library.service.LoanService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -26,7 +27,7 @@ public class LoanServiceImpl implements LoanService {
     @Override
     public List<LoanDto> getAllLoans() {
         log.info("ActionLog.getAllLoans.start");
-        var loans = loanRepository.findAll().stream()
+        var loans = loanRepository.findAll(PageRequest.of(0,5)).stream()
                 .map(loanMapper::mapToDto)
                 .collect(Collectors.toList());
         log.info("ActionLog.getAllLoans.end");

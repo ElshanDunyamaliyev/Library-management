@@ -27,26 +27,28 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 
     @Override
-    public Authentication authenticate(Authentication authentication){
-        String userName = authentication.getName();
+    public Authentication authenticate(Authentication authentication) {
+        String username = authentication.getName();
         String password = authentication.getCredentials().toString();
 
-        List<Member> members = memberRepository.findByEmail(userName);
+        List<Member> members = memberRepository.findByEmail(username);
 
-        if(!members.isEmpty()){
+        if (!members.isEmpty()) {
             Member member = members.get(0);
-            boolean isEqual = passwordEncoder.matches(member.getPassword(),password);
-            if(isEqual){
+            boolean passwordMatches = passwordEncoder.matches(password, member.getPassword());
+
+            if (passwordMatches) {
                 List<GrantedAuthority> authorities = new ArrayList<>();
                 authorities.add(new SimpleGrantedAuthority(member.getRole()));
-                return new UsernamePasswordAuthenticationToken(userName, password, authorities);
-            }else{
+                return new UsernamePasswordAuthenticationToken(username, password, authorities);
+            } else {
                 throw new BadCredentialsException("Invalid password");
             }
-        }else{
-            throw new BadCredentialsException("No member registered with this details");
+        } else {
+            throw new BadCredentialsException("No member registered with this email");
         }
     }
+
 
     @Override
     public boolean supports(Class<?> authentication) {

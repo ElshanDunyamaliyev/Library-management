@@ -1,6 +1,7 @@
 package com.example.Library.dto;
 
 import com.example.Library.enums.LoanStatus;
+import com.example.Library.enums.MemberRole;
 import lombok.Getter;
 import lombok.Setter;
 

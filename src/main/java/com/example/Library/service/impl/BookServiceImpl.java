@@ -32,7 +32,7 @@ public class BookServiceImpl implements BookService {
 
     public List<BookDto> getAllBooks() {
         log.info("ActionLog.getAllBooks.start");
-        var books = bookRepository.findAll(PageRequest.of(0,5)).stream().map(bookMapper::mapToDto).collect(Collectors.toList());
+        var books = bookRepository.findAll(PageRequest.of(0,3)).stream().map(bookMapper::mapToDto).collect(Collectors.toList());
         log.info("ActionLog.getAllBooks.end");
         return books;
     }
