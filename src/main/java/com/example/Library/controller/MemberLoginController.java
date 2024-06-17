@@ -24,7 +24,7 @@ public class MemberLoginController {
     public ResponseEntity<Member> register(@RequestBody Member user) {
 //        String password = passwordEncoder.encode(user.getPassword());
 //        user.setPassword(password);
-        memberService.saveCustomer(user);
+        memberService.saveMember(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 }
