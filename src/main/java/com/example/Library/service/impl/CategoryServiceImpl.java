@@ -2,6 +2,7 @@ package com.example.Library.service.impl;
 
 import com.example.Library.dto.CategoryDto;
 import com.example.Library.entity.Category;
+import com.example.Library.exception.ResourceNotFoundException;
 import com.example.Library.mapper.CategoryMapper;
 import com.example.Library.repository.CategoryRepository;
 import com.example.Library.service.CategoryService;
@@ -23,7 +24,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     public CategoryDto getCategoryById(Long categoryId) {
-        return categoryMapper.mapToDto(categoryRepository.findById(categoryId).orElseThrow());
+        return categoryMapper.mapToDto(categoryRepository.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException("Category Not Found")));
     }
 
     public void saveCategory(CategoryDto categoryDto) {
@@ -32,7 +33,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     public Category updateCategoryById(Long categoryId,CategoryDto categoryDto) {
-        Category category = categoryRepository.findById(categoryId).orElseThrow();
+        Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException("Category Not Found"));
         category.setCategoryName(categoryDto.getCategoryName());
         return categoryRepository.save(category);
     }

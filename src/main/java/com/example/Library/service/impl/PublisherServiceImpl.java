@@ -2,6 +2,7 @@ package com.example.Library.service.impl;
 
 import com.example.Library.dto.PublisherDto;
 import com.example.Library.entity.Publisher;
+import com.example.Library.exception.ResourceNotFoundException;
 import com.example.Library.mapper.PublisherMapper;
 import com.example.Library.repository.PublisherRepository;
 import com.example.Library.service.PublisherService;
@@ -25,7 +26,7 @@ public class PublisherServiceImpl implements PublisherService {
 
     @Override
     public PublisherDto getPublisherById(Long id) {
-        return publisherMapper.mapToDto(publisherRepository.findById(id).orElseThrow());
+        return publisherMapper.mapToDto(publisherRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Publisher Not Found")));
     }
 
     @Override
@@ -35,7 +36,7 @@ public class PublisherServiceImpl implements PublisherService {
 
     @Override
     public void updatePublisherById(Long publisherId, PublisherDto publisherDto) {
-        Publisher publisher = publisherRepository.findById(publisherId).orElseThrow();
+        Publisher publisher = publisherRepository.findById(publisherId).orElseThrow(() -> new ResourceNotFoundException("Publisher Not Found"));
         publisher.setPublisherName(publisherDto.getPublisherName());
         publisherRepository.save(publisher);
     }
