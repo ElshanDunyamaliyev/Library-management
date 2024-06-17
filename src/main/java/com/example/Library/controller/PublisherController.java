@@ -30,24 +30,26 @@ public class PublisherController {
             summary = "Adding Publisher"
     )
     @PostMapping
-    public ResponseEntity<String> savePublisher(@RequestBody PublisherDto publisherDto) {
+    public ResponseEntity<PublisherDto> savePublisher(@RequestBody PublisherDto publisherDto) {
         publisherService.savePublisher(publisherDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Publisher created successfully");
+        return ResponseEntity.status(HttpStatus.CREATED).body(publisherDto);
     }
 
     @Operation(
             summary = "Updating Publisher"
     )
     @PutMapping("/{publisherId}")
-    public void updatePublisher(@PathVariable Long publisherId, @RequestBody PublisherDto publisherDto) {
+    public ResponseEntity<?> updatePublisher(@PathVariable Long publisherId, @RequestBody PublisherDto publisherDto) {
         publisherService.updatePublisherById(publisherId,publisherDto);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @Operation(
             summary = "Deleting Publisher"
     )
     @DeleteMapping("/{publisherId}")
-    public void deletePublisher(@PathVariable Long publisherId) {
+    public ResponseEntity<?> deletePublisher(@PathVariable Long publisherId) {
         publisherService.deletePublisherById(publisherId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

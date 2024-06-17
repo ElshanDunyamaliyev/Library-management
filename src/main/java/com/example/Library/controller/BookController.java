@@ -5,6 +5,7 @@ import com.example.Library.entity.Book;
 import com.example.Library.service.impl.BookServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -89,7 +90,8 @@ public class BookController {
             description = "REST API to deleting Book by id"
     )
     @DeleteMapping("/{bookId}")
-    public void deleteBookById(@PathVariable Long bookId) {
+    public ResponseEntity<?> deleteBookById(@PathVariable Long bookId) {
         bookService.deleteBookById(bookId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

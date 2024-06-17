@@ -4,6 +4,8 @@ import com.example.Library.dto.CategoryDto;
 import com.example.Library.service.impl.CategoryServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,8 +31,9 @@ public class CategoryController {
             description = "REST API to Adding Category"
     )
     @PostMapping
-    public void addCategory(@RequestBody CategoryDto categoryDto) {
+    public ResponseEntity<?> addCategory(@RequestBody CategoryDto categoryDto) {
         categoryService.saveCategory(categoryDto);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @Operation(
@@ -38,7 +41,8 @@ public class CategoryController {
             description = "REST API to Deleting Category"
     )
     @DeleteMapping("/{categoryId}")
-    public void deleteCategory(@PathVariable Long categoryId) {
+    public ResponseEntity<?> deleteCategory(@PathVariable Long categoryId) {
         categoryService.deleteCategoryById(categoryId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

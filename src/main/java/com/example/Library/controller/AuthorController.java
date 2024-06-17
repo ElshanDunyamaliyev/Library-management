@@ -54,9 +54,9 @@ public class AuthorController {
             description = "REST API to create Author"
     )
     @PostMapping
-    public ResponseEntity<String> saveAuthor(@RequestBody AuthorDto authorDto) {
+    public ResponseEntity<AuthorDto> saveAuthor(@RequestBody AuthorDto authorDto) {
         authorService.saveAuthor(authorDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Author created successfully");
+        return ResponseEntity.status(HttpStatus.CREATED).body(authorDto);
     }
 
     @Operation(
@@ -64,8 +64,9 @@ public class AuthorController {
             description = "REST API to update Author"
     )
     @PutMapping("/{authorId}")
-    public void updateAuthor(@PathVariable Long authorId, @RequestBody AuthorDto authorDto) {
+    public ResponseEntity<?> updateAuthor(@PathVariable Long authorId, @RequestBody AuthorDto authorDto) {
         authorService.updateAuthorById(authorId,authorDto);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @Operation(
@@ -73,7 +74,8 @@ public class AuthorController {
             description = "REST API to update Author"
     )
     @DeleteMapping("/{authorId}")
-    public void deleteAuthor(@PathVariable Long authorId) {
+    public ResponseEntity<?> deleteAuthor(@PathVariable Long authorId) {
         authorService.deleteAuthorById(authorId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

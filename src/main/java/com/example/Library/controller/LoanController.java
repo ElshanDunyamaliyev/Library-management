@@ -4,6 +4,8 @@ import com.example.Library.dto.LoanDto;
 import com.example.Library.service.LoanService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -53,8 +55,9 @@ public class LoanController {
             summary = "Deleting Loan by id"
     )
     @DeleteMapping("/{id}")
-    public void deleteLoan(@PathVariable Long id) {
+    public ResponseEntity<?> deleteLoan(@PathVariable Long id) {
         loanService.deleteLoan(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
 
