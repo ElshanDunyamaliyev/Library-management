@@ -1,6 +1,5 @@
 package com.example.Library.entity;
 
-import com.example.Library.enums.CategoryType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,5 +23,5 @@ public class Category extends BaseEntity{
 
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Book> books;
+    private Set<Book> books;
 }

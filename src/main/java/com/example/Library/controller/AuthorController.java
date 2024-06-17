@@ -1,16 +1,13 @@
 package com.example.Library.controller;
 
 import com.example.Library.dto.AuthorDto;
-import com.example.Library.mapper.AuthorMapper;
 import com.example.Library.service.AuthorService;
-import com.example.Library.service.AuthorServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor

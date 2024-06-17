@@ -3,6 +3,8 @@ package com.example.Library.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "book")
 @Getter
@@ -28,4 +30,6 @@ public class Book extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
+    @OneToMany(mappedBy = "book")
+    private Set<Loan> loan;
 }

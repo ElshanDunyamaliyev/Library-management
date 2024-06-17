@@ -1,5 +1,7 @@
 databaseChangeLog:
   - include:
+      file: liquibase/1.0/member-changelog-1-0-0.sql
+  - include:
       file: liquibase/1.0/author-changelog-1-0-0.sql
   - include:
       file: liquibase/1.0/publisher-changelog-1-0-0.sql
@@ -7,3 +9,5 @@ databaseChangeLog:
       file: liquibase/1.0/category-changelog-1-0-0.sql
   - include:
       file: liquibase/1.0/book-changelog-1-0-0.sql
+  - include:
+      file: liquibase/1.0/loan-changelog-1-0-0.sql

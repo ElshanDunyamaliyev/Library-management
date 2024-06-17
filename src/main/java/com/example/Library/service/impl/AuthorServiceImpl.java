@@ -1,9 +1,10 @@
-package com.example.Library.service;
+package com.example.Library.service.impl;
 
 import com.example.Library.dto.AuthorDto;
 import com.example.Library.entity.Author;
 import com.example.Library.mapper.AuthorMapper;
 import com.example.Library.repository.AuthorRepository;
+import com.example.Library.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class AuthorServiceImpl implements AuthorService{
+public class AuthorServiceImpl implements AuthorService {
 
     private final AuthorRepository authorRepository;
     private final AuthorMapper authorMapper;

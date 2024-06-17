@@ -1,9 +1,10 @@
-package com.example.Library.service;
+package com.example.Library.service.impl;
 
 import com.example.Library.dto.CategoryDto;
 import com.example.Library.entity.Category;
 import com.example.Library.mapper.CategoryMapper;
 import com.example.Library.repository.CategoryRepository;
+import com.example.Library.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class CategoryServiceImpl implements CategoryService{
+public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository categoryRepository;
     private final CategoryMapper categoryMapper;

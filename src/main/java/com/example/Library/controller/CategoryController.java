@@ -1,7 +1,7 @@
 package com.example.Library.controller;
 
 import com.example.Library.dto.CategoryDto;
-import com.example.Library.service.CategoryServiceImpl;
+import com.example.Library.service.impl.CategoryServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

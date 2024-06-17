@@ -14,5 +14,5 @@ public class PublisherDto {
 
     private String publisherName;
 
-    private List<Book> books;
+    private Set<Book> books;
 }

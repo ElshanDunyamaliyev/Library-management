@@ -1,7 +1,6 @@
-package com.example.Library.service;
+package com.example.Library.service.impl;
 
 import com.example.Library.dto.BookDto;
-import com.example.Library.dto.CategoryDto;
 import com.example.Library.entity.Author;
 import com.example.Library.entity.Book;
 import com.example.Library.entity.Category;
@@ -9,13 +8,11 @@ import com.example.Library.mapper.BookMapper;
 import com.example.Library.repository.AuthorRepository;
 import com.example.Library.repository.BookRepository;
 import com.example.Library.repository.CategoryRepository;
+import com.example.Library.service.BookService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,7 +20,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class BookServiceImpl implements BookService{
+public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;

@@ -1,9 +1,13 @@
 package com.example.Library.dto;
 
 import com.example.Library.entity.Publisher;
+import com.example.Library.enums.LoanStatus;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -15,21 +19,34 @@ public class BookDto {
     private Category category;
     private Author author;
     private Publisher publisher;
+    private Set<Loan> loan;
 
-    @Data
+    @Getter
+    @Setter
     public static class Category{
         private String categoryName;
     }
 
-    @Data
+    @Getter
+    @Setter
     public static class Author{
         private String firstName;
         private String lastName;
         private Integer birthDate;
     }
 
-    @Data
+    @Getter
+    @Setter
     public static class Publisher{
         private String publisherName;;
+    }
+
+    @Getter
+    @Setter
+    public static class Loan{
+        private LocalDateTime issueDate;
+        private LocalDateTime dueDate;
+        private LocalDateTime returnDate;
+        private LoanStatus status;
     }
 }

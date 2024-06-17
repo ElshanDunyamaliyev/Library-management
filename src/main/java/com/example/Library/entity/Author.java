@@ -27,6 +27,6 @@ public class Author extends BaseEntity {
 
     @OneToMany(mappedBy = "author",cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Book> books;
+    private Set<Book> books;
 
 }

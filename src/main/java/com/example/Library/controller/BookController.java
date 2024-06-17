@@ -1,11 +1,8 @@
 package com.example.Library.controller;
 
 import com.example.Library.dto.BookDto;
-import com.example.Library.dto.CategoryDto;
 import com.example.Library.entity.Book;
-import com.example.Library.service.BookServiceImpl;
-import com.example.Library.service.CategoryService;
-import com.example.Library.service.CategoryServiceImpl;
+import com.example.Library.service.impl.BookServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
